@@ -46,6 +46,9 @@ namespace ProdavnicaMVC
             bundles.Add(new ScriptBundle("~/bundles/jtable-it").Include(
                     "~/Scripts/jtable/localization/jquery.jtable.it.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jtable-sr2").Include(
+                  "~/Scripts/jtable/localization/jquery.jtable.sr.js"));
+
         }
     }
 }

@@ -464,6 +464,7 @@
     <Content Include="Views\Korisnik\Index.cshtml" />
     <Content Include="Views\Uloga\Index.cshtml" />
     <Content Include="Views\KorisnikUloga\Index.cshtml" />
+    <Content Include="Scripts\jtable\localization\jquery.jtable.sr.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
