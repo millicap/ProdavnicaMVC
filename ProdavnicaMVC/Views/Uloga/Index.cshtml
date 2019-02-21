@@ -1,0 +1,50 @@
+﻿
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div id="UlogaTableContainer"></div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#UlogaTableContainer').jtable({
+                title: 'Uloge',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Naziv ASC', //Set default sorting
+                actions: {
+                    listAction: '/Uloga/ListUloga',
+                    deleteAction: '/Uloga/DeleteUloga',
+                    updateAction: '/Uloga/UpdateUloga',
+                    createAction: '/Uloga/CreateUloga'
+                },
+                fields: {
+                    UlogaId: {
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list: false
+                    },
+                    Naziv: {
+                        title: 'Naziv',
+                        width: '23%'
+                    }
+                  
+                }
+            });
+
+            //Load student list from server
+            $('#UlogaTableContainer').jtable('load');
+        });
+
+    </script>
+}
+

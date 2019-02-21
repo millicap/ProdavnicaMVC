@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div id="KorisnikTableContainer"></div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#KorisnikTableContainer').jtable({
+                title: 'Korisnici',
+                paging: true, //Enable paging
+                pageSize: 10, //Set page size (default: 10)
+                sorting: true, //Enable sorting
+                defaultSorting: 'Ime ASC', //Set default sorting
+                actions: {
+                    listAction: '/Korisnik/ListKorisnik',
+                    deleteAction: '/Korisnik/DeleteKorisnik',
+                    updateAction: '/Korisnik/UpdateKorisnik',
+                    createAction: '/Korisnik/CreateKorisnik'
+                },
+                fields: {
+                    KorisnikId: {
+                        key: true,
+                        create: false,
+                        edit: false,
+                        list: false
+                    },
+                    Ime: {
+                        title: 'Ime',
+                        width: '23%'
+                    },
+                    Prezime: {
+                        title: 'Prezime',
+
+                    },
+                    Adresa: {
+                        title: 'Adresa',
+                    },
+                    Pol: {
+                        title: 'Pol',
+                        width: '13%',
+                        options: { 'M': 'Musko', 'Z': 'Zensko' }
+                    },
+                    DatumRodjenja: {
+                        title: 'Datum rodjenja',
+                        width: '12%',
+                        type: 'date',
+                        displayFormat: 'yy-mm-dd'
+                        //options: '/Demo/GetCityOptions'
+                    }
+                }
+            });
+
+            //Load student list from server
+            $('#KorisnikTableContainer').jtable('load');
+        });
+
+    </script>
+    }
