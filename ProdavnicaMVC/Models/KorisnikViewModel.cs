@@ -9,10 +9,12 @@ namespace ProdavnicaMVC.Models
     public class KorisnikViewModel
     {
         public int KorisnikId { get; set; }
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Samo slova!")]
+        [RegularExpression(@"^[\p{L} ]+$", ErrorMessage = "Samo slova i razmak!")]
         public string Ime { get; set; }
+        [RegularExpression(@"^[\p{L} ]+$", ErrorMessage = "Samo slova!")]
         public string Prezime { get; set; }
         public string Adresa { get; set; }
+        [RegularExpression(@"^M?$|^Z?$", ErrorMessage = "Samo M ili Z!")]
         public string Pol { get; set; }
         public DateTime DatumRodjenja { get; set; }
     }

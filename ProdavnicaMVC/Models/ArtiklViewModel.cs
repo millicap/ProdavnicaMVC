@@ -12,6 +12,7 @@ namespace ProdavnicaMVC.Models
         public int ArtiklId { get; set; }
         [Display(Name = "Naziv", ResourceType = typeof(Resources.Resource))]
         [Required]
+        [RegularExpression(@"^[\p{L} 0-9]+$", ErrorMessage = "Samo slova i razmak!")]
         public string Naziv { get; set; }
         [Display(Name = "Cijena", ResourceType = typeof(Resources.Resource))]
         public decimal Cijena { get; set; }
