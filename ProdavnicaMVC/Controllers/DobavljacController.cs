@@ -11,12 +11,14 @@ namespace ProdavnicaMVC.Controllers
     public class DobavljacController : Controller
     {
         // GET: Dobavljac
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public JsonResult List(int jtStartIndex = 0, int jtPageSize = 0, string jtSorting = null)
         {
             try
@@ -49,6 +51,7 @@ namespace ProdavnicaMVC.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public JsonResult Create(Dobavljac dobavljac)
         {
             try
@@ -72,6 +75,7 @@ namespace ProdavnicaMVC.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public JsonResult Update(Dobavljac dobavljac)
         {
             try
@@ -99,6 +103,7 @@ namespace ProdavnicaMVC.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public JsonResult Delete(int dobavljacId)
         {
             try

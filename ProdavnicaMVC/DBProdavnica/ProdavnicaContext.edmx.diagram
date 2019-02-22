@@ -7,7 +7,7 @@
       <Diagram DiagramId="1e06f7742342432cbe16c0a15a861179" Name="Diagram1">
         <EntityTypeShape EntityType="Skola_milicaPetrovicModel.Artikl" Width="1.5" PointX="5" PointY="4" />
         <EntityTypeShape EntityType="Skola_milicaPetrovicModel.Dobavljac" Width="1.5" PointX="2.75" PointY="4.375" />
-        <EntityTypeShape EntityType="Skola_milicaPetrovicModel.Korisnik" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="Skola_milicaPetrovicModel.Korisnik" Width="1.5" PointX="0.75" PointY="5.375" />
         <EntityTypeShape EntityType="Skola_milicaPetrovicModel.KorisnikUloga" Width="1.5" PointX="3" PointY="0.875" />
         <EntityTypeShape EntityType="Skola_milicaPetrovicModel.Uloga" Width="1.5" PointX="0.75" PointY="1.125" />
         <AssociationConnector Association="Skola_milicaPetrovicModel.FK_Artikl_Dobavljac" />

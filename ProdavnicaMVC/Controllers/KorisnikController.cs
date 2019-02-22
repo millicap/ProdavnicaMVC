@@ -31,7 +31,9 @@ namespace ProdavnicaMVC.Controllers
                         k.Prezime,
                         k.Adresa,
                         k.Pol,
-                        k.DatumRodjenja
+                        k.DatumRodjenja,
+                        k.Username,
+                        k.Password
                         
                     }).ToList();
 
@@ -73,7 +75,9 @@ namespace ProdavnicaMVC.Controllers
                         Prezime = korisnikVM.Prezime,
                         Adresa = korisnikVM.Adresa,
                         Pol = korisnikVM.Pol,
-                        DatumRodjenja = korisnikVM.DatumRodjenja
+                        DatumRodjenja = korisnikVM.DatumRodjenja,
+                        Username = korisnikVM.Username,
+                        Password = korisnikVM.Password
                     };
 
                     context.Korisniks.Add(korisnik);
@@ -110,6 +114,8 @@ namespace ProdavnicaMVC.Controllers
                     korisnikUpdate.Adresa = korisnikVM.Adresa;
                     korisnikUpdate.Pol = korisnikVM.Pol;
                     korisnikUpdate.DatumRodjenja = korisnikVM.DatumRodjenja;
+                    korisnikUpdate.Username = korisnikVM.Username;
+                    korisnikUpdate.Password = korisnikVM.Password;
 
                     context.SaveChanges();
                 }

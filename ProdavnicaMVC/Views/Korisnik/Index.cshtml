@@ -51,9 +51,30 @@
                         title: 'Datum rodjenja',
                         width: '12%',
                         type: 'date',
-                        displayFormat: 'yy-mm-dd'
+                        displayFormat: 'yy-mm-dd',
                         //options: '/Demo/GetCityOptions'
+                    },
+                    Username: {
+                        title: 'Username',
+                        list: false
+                    },
+                    Password: {
+                        title: 'User Password',
+                        type: 'password',
+                        list: false
                     }
+
+                },
+                //na popunjavanje imena i prezimena popunjava i username
+                formCreated: function (event, data) {
+                    $("#Edit-Ime").keyup(function () {
+                        $("#Edit-Username").val($("#Edit-Ime").val().toLowerCase() + "." + $("#Edit-Prezime").val().toLowerCase());
+
+                    });
+                    $("#Edit-Prezime").keyup(function () {
+                        $("#Edit-Username").val($("#Edit-Ime").val().toLowerCase() + "." + $("#Edit-Prezime").val().toLowerCase());
+
+                    });
                 }
             });
 

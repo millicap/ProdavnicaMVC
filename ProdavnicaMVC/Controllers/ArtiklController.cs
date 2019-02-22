@@ -11,6 +11,7 @@ namespace ProdavnicaMVC.Controllers
     public class ArtiklController : Controller
     {
         // GET: Artikl
+        [Authorize(Roles ="Administrator, Moderator")]
         public ActionResult Index()
         {
             using (var context = new ProdavnicaContext())
@@ -31,7 +32,7 @@ namespace ProdavnicaMVC.Controllers
                 return View(artikli);
             }              
         }
-
+        [Authorize(Roles = "Administrator, Moderator")]
         public ActionResult Create()
         {
             using (var context = new ProdavnicaContext())
@@ -56,6 +57,7 @@ namespace ProdavnicaMVC.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator, Moderator")]
         public ActionResult Create(ArtiklViewModel artikl)
         {
             using (var context = new ProdavnicaContext())
@@ -76,7 +78,7 @@ namespace ProdavnicaMVC.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [Authorize(Roles = "Administrator, Moderator")]
         public ActionResult Edit(string id)
         {
             
@@ -106,6 +108,7 @@ namespace ProdavnicaMVC.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator, Moderator")]
         public ActionResult Edit(ArtiklViewModel artikl)
         {
             using (var context = new ProdavnicaContext())
@@ -125,6 +128,7 @@ namespace ProdavnicaMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Administrator, Moderator")]
         public ActionResult Delete(string id)
         {
             int artiklId = Convert.ToInt32(id);
@@ -148,6 +152,7 @@ namespace ProdavnicaMVC.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator, Moderator")]
         public ActionResult Delete(int id)
         {
             using (var context = new ProdavnicaContext())
@@ -174,6 +179,7 @@ namespace ProdavnicaMVC.Controllers
             return RedirectToAction("Index", "Artikl", null);
         }*/
 
+       [AllowAnonymous]     //bilo ko moze pristupiti
         public JsonResult PromijeniJezik(string lang)
         {
             HttpCookie myCookie = new HttpCookie("Jezik");    //trazi cookie Jezik

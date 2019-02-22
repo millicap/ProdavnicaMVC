@@ -24,8 +24,14 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Artikli", "Index", "Artikl")</li>
                     <li>@Html.ActionLink("Korisnik", "Index", "Korisnik")</li>
+                    <li>@Html.ActionLink("Dobavljac", "Index", "Dobavljac")</li>
                     <li>@Html.ActionLink("Uloga", "Index", "Uloga")</li>
                     <li>@Html.ActionLink("Korisnici i uloge", "Index", "KorisnikUloga")</li>
+                    <li>@Html.ActionLink("Uloguj se", "UlogujSe", "Login")</li>
+                    @if (User.Identity.IsAuthenticated)                                //pojavljuje se samo kada je neko vec prijavljen
+                    {
+                        <li>@Html.ActionLink("Odjava", "SignOut", "Login")</li>
+                    }
                     <li>
                         @Html.DropDownList("Jezik", new List<SelectListItem>()
                    {
@@ -33,13 +39,11 @@
                         new SelectListItem(){ Text = "Srpski", Value = ""},
                         new SelectListItem(){ Text = "Engleski", Value = "en"},
                          new SelectListItem(){ Text = "Italijanski", Value ="it" },
-
-
                    }, new { @class = "form-control", @id = "listaJezika" });
-
                     </li>
-                </ul>
-            </div>
+
+
+</div>
         </div>
     </div>
     <div class="container body-content">

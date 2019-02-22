@@ -11,8 +11,7 @@ namespace ProdavnicaMVC.DBProdavnica
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Korisnik
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,12 +21,13 @@ namespace ProdavnicaMVC.DBProdavnica
         }
     
         public int KorisnikId { get; set; }
-        [RegularExpression(@"^[a-zA-Z]+$")]
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Adresa { get; set; }
         public string Pol { get; set; }
         public System.DateTime DatumRodjenja { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KorisnikUloga> KorisnikUlogas { get; set; }
