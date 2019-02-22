@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Linq.Dynamic;
 using ProdavnicaMVC.Models;
+using ProdavnicaMVC.Helpers;
 
 namespace ProdavnicaMVC.Controllers
 {
@@ -46,7 +47,6 @@ namespace ProdavnicaMVC.Controllers
                     return Json(new { Result = "OK", Records = records, TotalRecordCount = count });
                 }
 
-
             }
             catch (Exception ex)
             {
@@ -77,7 +77,7 @@ namespace ProdavnicaMVC.Controllers
                         Pol = korisnikVM.Pol,
                         DatumRodjenja = korisnikVM.DatumRodjenja,
                         Username = korisnikVM.Username,
-                        Password = korisnikVM.Password
+                        Password =Encryptor.MD5Hash(korisnikVM.Password)
                     };
 
                     context.Korisniks.Add(korisnik);
@@ -103,7 +103,6 @@ namespace ProdavnicaMVC.Controllers
                 {
                     return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
                 }
-
                 using (var context = new ProdavnicaContext())
                 {
                     Korisnik korisnikUpdate = context.Korisniks.Find(korisnikVM.KorisnikId);

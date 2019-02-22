@@ -84,7 +84,6 @@ namespace ProdavnicaMVC.Controllers
                 };
                 return View(izmijeniSifruVM);
             }
-
         }
 
         [HttpPost]
@@ -96,8 +95,6 @@ namespace ProdavnicaMVC.Controllers
                 if (ModelState.IsValid)
                 {
                     //return Json(new { Result = "ERROR", Message = "Form is not valid! Please correct it and try again." });
-
-
                     var korisnik = context.Korisniks.Find(promijeniSifruVM.KorisnikId);
                     if (korisnik.Password != promijeniSifruVM.NewPassword)
                     {
@@ -110,19 +107,14 @@ namespace ProdavnicaMVC.Controllers
                     {
                         ModelState.AddModelError("", "Greska!");
                         return View(promijeniSifruVM);
-                    }
-                    
+                    }                   
                 }
                 else
                 {
                     //ModelState.AddModelError("", "Greska");
                     return View(promijeniSifruVM);
-                }
-
-               
+                }             
             }
-
-
         }
     }
 }
