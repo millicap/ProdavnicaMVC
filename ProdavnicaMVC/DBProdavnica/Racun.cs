@@ -12,23 +12,21 @@ namespace ProdavnicaMVC.DBProdavnica
     using System;
     using System.Collections.Generic;
     
-    public partial class Artikl
+    public partial class Racun
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Artikl()
+        public Racun()
         {
             this.Stavkas = new HashSet<Stavka>();
         }
     
-        public int ArtiklId { get; set; }
-        public string Naziv { get; set; }
-        public decimal Cijena { get; set; }
-        public int Kolicina { get; set; }
-        public string Opis { get; set; }
-        public int DobavljacId { get; set; }
-        public string Slika { get; set; }
+        public int RacunId { get; set; }
+        public int KorisnikId { get; set; }
+        public System.DateTime DatumIzdavanja { get; set; }
+        public int BrojRacuna { get; set; }
+        public decimal UkupanIznos { get; set; }
     
-        public virtual Dobavljac Dobavljac { get; set; }
+        public virtual Korisnik Korisnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stavka> Stavkas { get; set; }
     }

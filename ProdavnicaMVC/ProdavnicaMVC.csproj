@@ -150,6 +150,7 @@
     <Compile Include="Controllers\KorisnikController.cs" />
     <Compile Include="Controllers\KorisnikUlogaController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RacunController.cs" />
     <Compile Include="Controllers\UlogaController.cs" />
     <Compile Include="DBProdavnica\Artikl.cs">
       <DependentUpon>ProdavnicaContext.tt</DependentUpon>
@@ -178,6 +179,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProdavnicaContext.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DBProdavnica\Racun.cs">
+      <DependentUpon>ProdavnicaContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBProdavnica\Stavka.cs">
+      <DependentUpon>ProdavnicaContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBProdavnica\Uloga.cs">
       <DependentUpon>ProdavnicaContext.tt</DependentUpon>
     </Compile>
@@ -186,12 +193,15 @@
     </Compile>
     <Compile Include="Helpers\Encryptor.cs" />
     <Compile Include="Helpers\HashHelper.cs" />
+    <Compile Include="Models\ArtiklNaStanjuViewModel.cs" />
     <Compile Include="Models\ArtiklViewModel.cs" />
     <Compile Include="Models\DobavljacViewModel.cs" />
     <Compile Include="Models\PromijeniSifruViewModel.cs" />
     <Compile Include="Models\KorisnikUlogaViewModel.cs" />
     <Compile Include="Models\KorisnikViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\RacunViewModel.cs" />
+    <Compile Include="Models\StavkaViewModel.cs" />
     <Compile Include="Models\UlogaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.en.Designer.cs">
@@ -472,6 +482,7 @@
     <Content Include="Scripts\jtable\localization\jquery.jtable.sr.js" />
     <Content Include="Views\Login\UlogujSe.cshtml" />
     <Content Include="Views\Login\PromijeniSifru.cshtml" />
+    <Content Include="Views\Racun\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

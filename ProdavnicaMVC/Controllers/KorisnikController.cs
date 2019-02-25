@@ -41,8 +41,6 @@ namespace ProdavnicaMVC.Controllers
                     var count = korisnici.Count();
                     var records = korisnici.OrderBy(jtSorting).Skip(jtStartIndex).Take(jtPageSize).ToList();
 
-
-
                     //Return result to jTable
                     return Json(new { Result = "OK", Records = records, TotalRecordCount = count });
                 }
@@ -53,8 +51,6 @@ namespace ProdavnicaMVC.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
-
-
 
         [HttpPost]
         public JsonResult CreateKorisnik(KorisnikViewModel korisnikVM)

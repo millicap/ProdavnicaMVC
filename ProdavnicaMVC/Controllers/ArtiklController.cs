@@ -120,8 +120,8 @@ namespace ProdavnicaMVC.Controllers
                 art.Cijena = artikl.Cijena;
                 art.Kolicina = artikl.Kolicina;
                 art.Opis = artikl.Opis;
-                artikl.DobavljacId = artikl.DobavljacId;
-                artikl.Slika = artikl.Slika;
+                art.DobavljacId = artikl.DobavljacId;
+                art.Slika = artikl.Slika;
 
                 context.SaveChanges();
             }
