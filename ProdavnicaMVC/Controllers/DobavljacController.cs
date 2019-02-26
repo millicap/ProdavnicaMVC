@@ -34,13 +34,9 @@ namespace ProdavnicaMVC.Controllers
                     var count = dobavljaci.Count();
                     var records = dobavljaci.OrderBy(jtSorting).Skip(jtStartIndex).Take(jtPageSize).ToList();
 
-
-
                     //Return result to jTable
                     return Json(new { Result = "OK", Records = records, TotalRecordCount = count });
                 }
-
-
             }
             catch (Exception ex)
             {

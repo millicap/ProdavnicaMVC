@@ -15,14 +15,13 @@
            
             <div class="col-md-6 bg-info" style="min-height:300px" id="droppable">
                 <h4>Racun</h4>
-                <ul id="listaStavkiNaRacunu"></ul>
-
+                <ul id="listaStavkiNaRacunu"></ul>            
             </div>
 
             <!--artikli-->
             <div class="col-md-6 ">
                 <h4>Artikli</h4>
-                <ul>
+                <ul id="ArtikliNaStanju">
                     @foreach (var item in Model)
                     {
                         <li class="draggable" data-cijena="@item.Cijena" data-artiklid="@item.ArtiklId" data-naziv="@item.Naziv" style="list-style:none">
@@ -48,8 +47,10 @@
 </div>
 
 <div>
-    <input type="button" value="Sacuvaj"/>
+    <input type="button" id="btnSacuvaj" value="Sacuvaj"/>
 </div>
+
+<div id="Greska"></div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -57,47 +58,102 @@
 <script type="text/javascript">
 
     $(function () {
-        $(".draggable").draggable({
-            cancel: "a.ui-icon",
-            revert: "invalid",
-            containment: "document",
-            cursor: "move"
+        function drag() {
+            $(".draggable").draggable({
+                cancel: "a.ui-icon",
+                revert: "invalid",
+                containment: "document",
+                cursor: "move"
+            });
+        }
 
-        });
         $("#droppable").droppable({
             drop: function (event, ui) {   //ui-  ono sto prenosim
-
-                var trenutnaCijena = Number($("#Ukupno").text());
-                var ukupnaCijena = Number(ui.draggable.attr('data-cijena')) + trenutnaCijena;
-                $("#Ukupno").text(ukupnaCijena);        
 
                 $("#listaStavkiNaRacunu").append(`<li style="list-style:none" data-cijena="` + Number(ui.draggable.attr('data-cijena')) + `" data-artiklid="` + ui.draggable.attr('data-artiklid') + `" data-naziv="` + ui.draggable.attr('data-naziv') +`">                     
                                 <div>
                                     <p>` + ui.draggable.attr('data-naziv') + `<button class="btnX" style="float:right">X</button></p>
                                 </div>
                                 <div>
-                                    <p>Kolicina: <input type="text" /><span style="float:right">Cijena: ` + ui.draggable.attr("data-cijena") + `</span></p>
+                                    <p>Kolicina: <input type="number" class="inputKolicina" /><span style="float:right">Cijena: ` + ui.draggable.attr("data-cijena") + `</span></p>
                                 </div>                      
                             </li>`);
 
-                $('#listaStavki').children().last().find('button').on('click', function () {
+                $('#listaStavkiNaRacunu').children().last().find('button').on('click', function () {
                     var li = $(this).parent().parent().parent();
-                    li.remove();
+          
+                    $("#ArtikliNaStanju").append(`<li class="draggable" data-cijena="` + li.data('cijena') + `" data-artiklid="` + li.data('artiklid') + `" data-naziv="` + li.data('naziv') + `" style="list-style:none">
+                            <div class=" bg-info">
 
+                                <div class="row" style="padding:10px">
+                                    <div class="col-md-6">
+                                        <p>` + li.data('naziv') + `</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="text-right">` + li.data('cijena') + `</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>`);
+
+                    li.remove();
+                    IzracunajCijenu();
+                    drag();
+                });
+
+                $("#listaStavkiNaRacunu").children().last().find('input').keyup(function () {   
+                    IzracunajCijenu();
+                });
+
+                $("#listaStavkiNaRacunu").children().last().find('input').change(function () {
+                    IzracunajCijenu();
                 });
                 ui.draggable.remove();
-
+                IzracunajCijenu();
             }
         });
+        drag();
     });
 
     function IzracunajCijenu() {
         var cijena = 0;
 
-        $('#listaStavki').children().each(function () {
+        $.each($('#listaStavkiNaRacunu').children(), function (key, value) {
 
+            var kolicina = Number(value.children[1].children[0].children[0].value);
+            cijena += (Number(value.dataset.cijena) || 0) * (kolicina || 0);
+            
         });
+        
+        $("#Ukupno").text(cijena);
+    }
 
-    };
+    $("#btnSacuvaj").click(function () {
+        let objekat = PosaljiKupljeneStavke();
+        console.log(objekat);
+        $.post('/Racun/Create', objekat, function (result, status) {    //1. parametar ono sto vracamo od kontrolera, a 2.status koji dobijamo na osnovu konekciju izmedju kontrolera i post metode 
+
+            if (result.Success) {
+                window.location.href = "/Racun/Create"
+            } else {
+                $("#Greska").text(result.Message)
+            }
+        });
+    });
+
+
+    function PosaljiKupljeneStavke() {
+
+        var stavke = {
+
+            listaKupljenihStavki : []
+        }
+        $.each($('#listaStavkiNaRacunu').children(), function (key, value) {
+
+            var kolicina = Number(value.children[1].children[0].children[0].value);
+            stavke.listaKupljenihStavki.push({ ArtiklId: Number(value.dataset.artiklid), Kolicina: kolicina }); //artiklid MORA malim slovom!!! kad god data, dataset...
+        });
+        return stavke;
+    }
 
 </script>

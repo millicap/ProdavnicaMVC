@@ -196,6 +196,7 @@
     <Compile Include="Models\ArtiklNaStanjuViewModel.cs" />
     <Compile Include="Models\ArtiklViewModel.cs" />
     <Compile Include="Models\DobavljacViewModel.cs" />
+    <Compile Include="Models\KupljeniArtikliViewModel.cs" />
     <Compile Include="Models\PromijeniSifruViewModel.cs" />
     <Compile Include="Models\KorisnikUlogaViewModel.cs" />
     <Compile Include="Models\KorisnikViewModel.cs" />

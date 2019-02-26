@@ -49,7 +49,7 @@
           <Key>
             <PropertyRef Name="RacunId" />
           </Key>
-          <Property Name="RacunId" Type="int" Nullable="false" />
+          <Property Name="RacunId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KorisnikId" Type="int" Nullable="false" />
           <Property Name="DatumIzdavanja" Type="date" Nullable="false" />
           <Property Name="BrojRacuna" Type="int" Nullable="false" />
@@ -59,7 +59,7 @@
           <Key>
             <PropertyRef Name="StavkaId" />
           </Key>
-          <Property Name="StavkaId" Type="int" Nullable="false" />
+          <Property Name="StavkaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RacunId" Type="int" Nullable="false" />
           <Property Name="ArtiklId" Type="int" Nullable="false" />
           <Property Name="Cijena" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -265,7 +265,7 @@
           <Key>
             <PropertyRef Name="RacunId" />
           </Key>
-          <Property Name="RacunId" Type="Int32" Nullable="false" />
+          <Property Name="RacunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="KorisnikId" Type="Int32" Nullable="false" />
           <Property Name="DatumIzdavanja" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="BrojRacuna" Type="Int32" Nullable="false" />
@@ -277,7 +277,7 @@
           <Key>
             <PropertyRef Name="StavkaId" />
           </Key>
-          <Property Name="StavkaId" Type="Int32" Nullable="false" />
+          <Property Name="StavkaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RacunId" Type="Int32" Nullable="false" />
           <Property Name="ArtiklId" Type="Int32" Nullable="false" />
           <Property Name="Cijena" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
